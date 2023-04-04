@@ -1,7 +1,8 @@
 <button id="myButton">查看昆明天气</button>
-
+<div id="weatherTable"></div>
 <script>
   var myButton = document.getElementById("myButton");
+  var weatherTable = document.getElementById("weatherTable");
   myButton.addEventListener("click", function() {
     var apiKey = 'ec6de98329e3426b62559fafd25516ec'; // 请将 your_api_key 替换为你的 API Key
     fetch('https://api.openweathermap.org/data/2.5/weather?q=kunming&appid=' + apiKey)
