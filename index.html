@@ -3,27 +3,31 @@
 <script>
   var myButton = document.getElementById("myButton");
   var weatherTable = document.getElementById("weatherTable");
-  myButton.addEventListener("click", function() {
+  myButton.addEventListener("click", function () {
     var apiKey = 'ec6de98329e3426b62559fafd25516ec'; // 请将 your_api_key 替换为你的 API Key
     fetch('https://api.openweathermap.org/data/2.5/weather?q=kunming&appid=' + apiKey)
       .then(response => response.json())
-.then(data => {
+      .then(data => {
         var weather = data.weather[0];
         var temperature = (data.main.temp - 273.15).toFixed(1) + '℃';
         var humidity = data.main.humidity + '%';
         var table = `
-          <table>
-            <tr>
+        <table>
+         <thead>
+           <tr>
               <th>天气状况</th>
               <th>温度</th>
-              <th>湿度</th>
-            </tr>
+               <th>湿度</th>
+          </tr>
+          </thead>
+          <tbody>
             <tr>
-              <td>${weather.description}</td>
-              <td>${temperature}</td>
-              <td>${humidity}</td>
+                <td>${weather.description}</td>
+                 <td>${temperature}&#8451;</td>
+                <td>${humidity}%</td>
             </tr>
-          </table>
+           </tbody>
+        </table>
         `;
         weatherTable.innerHTML = table;
       })
