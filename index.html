@@ -6,16 +6,25 @@
     var apiKey = 'ec6de98329e3426b62559fafd25516ec'; // 请将 your_api_key 替换为你的 API Key
     fetch('https://api.openweathermap.org/data/2.5/weather?q=kunming&appid=' + apiKey)
       .then(response => response.json())
-  .then(data => {
+.then(data => {
         var weather = data.weather[0];
         var temperature = (data.main.temp - 273.15).toFixed(1) + '℃';
         var humidity = data.main.humidity + '%';
         var table = `
-          | 天气状况 | 温度 | 湿度 |
-          | --- | --- | --- |
-          | ${weather.description} | ${temperature} | ${humidity} |
+          <table>
+            <tr>
+              <th>天气状况</th>
+              <th>温度</th>
+              <th>湿度</th>
+            </tr>
+            <tr>
+              <td>${weather.description}</td>
+              <td>${temperature}</td>
+              <td>${humidity}</td>
+            </tr>
+          </table>
         `;
-        alert(table);
+        weatherTable.innerHTML = table;
       })
       .catch(error => console.error(error));
   });
