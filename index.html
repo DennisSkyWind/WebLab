@@ -1,7 +1,18 @@
-<button id="myButton">Click me</button>
+<button id="myButton">查看昆明天气</button>
+
 <script>
   var myButton = document.getElementById("myButton");
   myButton.addEventListener("click", function() {
-    alert("Hello, I am chatptg!");
+    var apiKey = 'ec6de98329e3426b62559fafd25516ec'; // 请将 your_api_key 替换为你的 API Key
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=kunming&appid=' + apiKey)
+      .then(response => response.json())
+      .then(data => {
+        var weather = data.weather[0];
+        var temperature = (data.main.temp - 273.15).toFixed(1) + '℃';
+        var humidity = data.main.humidity + '%';
+        var message = '昆明天气：' + weather.description + '，温度：' + temperature + '，湿度：' + humidity + '。';
+        alert(message);
+      })
+      .catch(error => console.error(error));
   });
 </script>
