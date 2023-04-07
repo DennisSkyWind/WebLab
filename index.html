@@ -12,23 +12,23 @@
         var temperature = (data.main.temp - 273.15).toFixed(1) + '℃';
         var humidity = data.main.humidity + '%';
         var table = `
-        <table>
-         <thead>
-           <tr>
-              <th>天气状况</th>
-              <th>温度</th>
-               <th>湿度</th>
-          </tr>
-          </thead>
-          <tbody>
-            <tr>
-                <td>${weather.description}</td>
-                 <td>${temperature}&#8451;</td>
-                <td>${humidity}%</td>
-            </tr>
-           </tbody>
-        </table>
-        `;
+                                 <table>
+                                   <thead>
+                                       <tr>
+                                       <th>天气状况</th>
+                                       <th>温度</th>
+                                       <th>湿度</th>
+                                      </tr>
+                                 </thead>
+                                  <tbody>
+                                        <tr>
+                                         <td>${weather.description}</td>
+                                          <td>${temperature}&#8451;</td>
+                                         <td>${humidity}%</td>
+                                         </tr>
+                                    </tbody>
+                                  </table>
+                                   `;
         weatherTable.innerHTML = table;
       })
       .catch(error => console.error(error));
